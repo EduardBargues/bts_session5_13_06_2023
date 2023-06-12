@@ -27,42 +27,98 @@ _class: invert
 
 ---
 
-- How can we scale our permissions when there are 100s of developers and environments?
-  - Introduce IAM roles.
-  - What is the difference with respect users?
-  - Diagram where we see the "developer", "deployment" roles in 3 accounts.
-  - How do we do it at Ohpen? Link IAM roles with AD users and groups.
+# **Previously in C&D ...**
+
+Any questions about previous sessions and assignments?
+
+![bg left:28% w:100%](images/any_question.png)
 
 ---
 
-- How do we control our services' permissions? -> With IAM roles!
-  - Show get_user lambda and it's permissions.
-  - Show save_user lambda and it's permissions.
+![bg h:85%](images/security_1.png)
 
 ---
 
-- How can we link our code in Github to AWS ?
-  - What we did last class but from Github.
-  - Introduce Pull requests.
-  - Introduce CICD.
-  - Example: Create pull request in repository.
-  - Example at Ohpen: (Ohpen-ionated) CICD pipeline.
-    - Unit tests in CI
-    - Integration tests in CD
-    - E2E tests in CD
+# **Code in Github**
+
+> Developers manage code in **branches** and create **pull requests** to **continuously integrate** their code to **main** branch.
+
+Let's see it in the repository and Ohpen.
+
+![bg left:25% w:100%](images/github.png)
 
 ---
 
-- How can we oversee costs in AWS?
-  - Dashboards
-  - Reports
-  - Budgets
-  - Types of costs:
-    - Unblended
-    - Amortized
-    - Blended
-    - Net Unblended
-    - Net Amortized
-  - Granularity of costs thanks to tags.
+![bg w:95%](images/cicd.png)
 
 ---
+
+# **Quality Assurance**
+
+- **Manual** testing: Everybody does it.
+- **Unit**: Tests a single unit of code.
+- **Integration**: Tests one use case. Service deployed.
+- **End to end**: Tests a user story. Service deployed.
+- Can you come up with examples?
+
+---
+
+# **CICD vs tests**
+
+When should we use each type of testing?
+
+- **Manual**: Fast, medium cost, bad coverage.
+- **Unit**: Fast, low cost, limited coverage.
+- **Integration**: Slow, medium cost, good coverage.
+- **E2E**: Slower, medium cost, high coverage.
+
+> Serverless architecture have shifted the paradigm.
+
+---
+
+# **IAM roles**
+
+- Users belong to one person.
+- Roles can be assumed if allowed.
+- Roles don't have credentials but temporary keys.
+- AWS services use IAM roles. [Let's see it](https://github.com/EduardBargues/bts_session5_13_06_2023).
+- How are our lambdas allowed to access our Dynamodb?
+
+![bg left:25% w:100%](images/any_question.png)
+
+---
+
+# **Permissions at Ohpen**
+
+- How users access AWS?
+- How does Github deploy?
+- How we ensure nobody can deploy from laptop?
+
+![bg left:25% h:100%](images/ohpen_logo.png)
+
+---
+
+![bg h:85%](images/security_ohpen.png)
+
+---
+
+# **AWS Cost explorer**
+
+How can we oversee costs in AWS?
+
+- Reports
+- Budgets
+- [Unblended vs Amortized](https://aws.amazon.com/blogs/aws-cloud-financial-management/understanding-your-aws-cost-datasets-a-cheat-sheet/)
+- How does Ohpen do it? The importance of tags.
+
+![bg left:20%](images/money.png)
+
+---
+
+# **Conclusions**
+
+- **IAM roles and SSO** scale up your permissions across your organization.
+- IAM roles provide temporary credentials.
+- Teams leverage **CICD** to **ensure** product **quality**.
+- As a **PM**, we care about **integration** and **e2e** testing.
+- **AWS Cost explorer** is the go-to solution for costs in AWS
