@@ -16,6 +16,7 @@ function handlerWrapper(db) {
         age: age,
         birthYear: item.birthYear,
         potato: "with ketchup",
+        newField: "with another value",
       }),
     };
   };
